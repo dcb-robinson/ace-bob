@@ -24,6 +24,12 @@ If the requested node is connector-specific, also read:
 - [`skills/shared/connector-index.md`](connector-index.md)
 - the relevant file under [`skills/shared/connectors/`](connectors)
 
+## Simplicity
+Use the minimum set of nodes required to satisfy the user's request.
+- Do not add a Compute node or ESQL file unless the user explicitly asked for message transformation or routing logic.
+- A direct wire from an Input node to a Reply node is the correct implementation of a pass-through or echo flow.
+- Do not add nodes, files, or abstractions "just in case" — every node must trace directly to a stated requirement.
+
 ## Required inputs
 If a node requires a value that the user has not provided, ask for it unless there is an obvious safe default.
 For example:

@@ -69,6 +69,8 @@ This document contains the canonical mapping from ACE node names to the `xmi:typ
 - Reset Content Descriptor node → namespace prefix of `ComIbmResetContentDescriptor.msgnode`
 
 ## HTTP nodes
+> **⚠ Naming trap:** The ACE Toolkit UI labels these nodes "HTTP Input", "HTTP Reply", and "HTTP Request", but the underlying `.msgnode` filenames use the `ComIbmWS*` prefix — **not** `ComIbmHTTP*`. Always use the `ComIbmWS*` variants listed here. Using `ComIbmHTTPInput` or `ComIbmHTTPReply` will cause "Message node cannot be located" errors and incorrect icons at runtime.
+
 - HTTP Input node → namespace prefix of `ComIbmWSInput.msgnode`
 - HTTP Reply node → namespace prefix of `ComIbmWSReply.msgnode`
 - HTTP Request node → namespace prefix of `ComIbmWSRequest.msgnode`
