@@ -13,10 +13,11 @@ Use this checklist after generating or updating ACE artifacts and before finaliz
 - The generated files were placed in the correct project type.
 
 ### Project metadata — Application projects
-When a new Application project is created, all three of the following must be present:
-- `.project` contains **exactly 2 natures**: `com.ibm.etools.msgbroker.tooling.applicationNature` and `com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature`. Do not add extra natures.
-- `.settings/org.eclipse.core.resources.prefs` exists and the encoding key uses the **actual project name** — e.g. `encoding/HTTPEchoApp=UTF-8`. Using the literal text `<project>` causes the "no explicit encoding set" warning.
-- `application.descriptor` exists in the project root with the validated XML structure from `ace-projects.md`.
+When a new Application project is created, **all four of the following files must be present in the output** — not described in prose, actually created:
+- `.project` — contains **exactly 2 natures**: `com.ibm.etools.msgbroker.tooling.applicationNature` and `com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature`. Do not add extra natures.
+- `.settings/org.eclipse.core.resources.prefs` — **must be created as a file**. The encoding key must use the actual project name — e.g. `encoding/HTTPEchoApp=UTF-8`. Using the literal text `<project>` causes the "no explicit encoding set" warning. A missing file causes "File not found" errors.
+- `application.descriptor` — its `<references>` block must list every `.msgflow` file in the project. **An empty `<references/>` element is wrong** — it causes the application to not appear in the ACE Toolkit Application Development view.
+- The `.msgflow` file(s) requested by the user.
 
 ### Project metadata — Policy projects
 - Any new Policy project contains the required metadata files.

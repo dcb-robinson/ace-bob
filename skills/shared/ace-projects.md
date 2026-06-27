@@ -14,6 +14,8 @@ An ACE Toolkit Application project must contain:
 - a `.settings/org.eclipse.core.resources.prefs` file
 - an `application.descriptor` file in the project root
 
+**Every one of these files must be created as explicit file output.** Do not describe the project structure in prose and omit any of them. If a file is listed here and not present in the output, the project is incomplete.
+
 ## `.project` Requirements
 ACE Toolkit Application projects **MUST** contain the following project natures section:
 
@@ -154,13 +156,26 @@ encoding/HTTPEchoApp=UTF-8
 Omitting this substitution causes the Toolkit warning: `Project '<name>' has no explicit encoding set`.
 
 ## `application.descriptor` Requirements
-The `application.descriptor` file must exist in the project root and use the validated ACE structure.
+The `application.descriptor` file must exist in the project root and must list every `.msgflow` file in the project as a `<reference>` entry. **Do not use an empty `<references/>` element** — an empty element causes the application to not appear correctly in the ACE Toolkit Application Development view.
+
+For example, if the project contains `HTTPEcho.msgflow`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:appDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.app">
-  <references/>
+  <references>
+    <reference>HTTPEcho.msgflow</reference>
+  </references>
 </ns2:appDescriptor>
+```
+
+Add one `<reference>` element per `.msgflow` file in the project. If multiple flows exist:
+
+```xml
+<references>
+  <reference>Flow1.msgflow</reference>
+  <reference>Flow2.msgflow</reference>
+</references>
 ```
 
 ## Output Note
