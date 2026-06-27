@@ -30,6 +30,10 @@ When a new Application project is created, all three of the following must be pr
 - Required schema files were created where relevant.
 - Required policy files were created where relevant.
 
+### ESQL correctness
+- If a Compute node transforms between message domains (e.g. XMLNSC → JSON), confirm that output fields are constructed explicitly — not via a direct tree assignment (`SET OutputRoot.JSON.Data = InputRoot.XMLNSC.*`). A direct assignment copies XML tree structure verbatim and produces duplicate keys for repeated elements.
+- Confirm that every element which can repeat in the source is emitted as a JSON array in the output.
+
 ### Simplicity
 - The flow topology is the minimum required to satisfy the request. Do not add Compute nodes, ESQL files, or transformation logic unless the user explicitly asked for transformation. A direct wire from Input to Reply is correct for a pass-through or echo pattern.
 

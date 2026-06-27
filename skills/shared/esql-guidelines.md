@@ -22,6 +22,34 @@ Use this document when generating or reviewing `.esql` files for ACE Compute nod
 - Consider `CREATE ... PARSE` when it is more efficient than serializing and reparsing a copied logical tree.
 - Be deliberate about Compute node copy behavior and avoid unnecessary message assembly duplication.
 
+## Cross-domain tree assignment (XML → JSON)
+**Never use a direct tree assignment to convert between message domains**, for example:
+
+```esql
+-- WRONG: preserves XML tree structure, not JSON semantics
+SET OutputRoot.JSON.Data = InputRoot.XMLNSC.SomeElement;
+```
+
+This copies the XMLNSC logical tree verbatim into the JSON domain. Repeated XML sibling elements (e.g. multiple `<Invoice>` or `<Item>` children) become duplicate object keys in the JSON output, which is structurally invalid JSON.
+
+**Always construct the JSON output explicitly** using `SET` statements and `CREATE FIELD ... IDENTITY` or array construction:
+- Identify every element that can repeat in the XML source (siblings with the same name).
+- Build each repeating group as a JSON array using a `FOR ... AS` loop with `APPEND` or indexed `CREATE`.
+- Assign scalar fields individually.
+
+Example pattern for a repeating element:
+
+```esql
+DECLARE i INTEGER 1;
+FOR srcItem AS InputRoot.XMLNSC.SaleEnvelope.SaleList.Invoice[] DO
+    SET OutputRoot.JSON.Data.SaleList.Invoice[i].Number = srcItem.Number;
+    -- ... other scalar fields ...
+    SET i = i + 1;
+END FOR;
+```
+
+This rule applies whenever the source and target domains differ (XMLNSC→JSON, XMLNSC→JSONARRAY, etc.).
+
 ## Flow design considerations
 - Prefer clean flow design over wiring every failure terminal individually when a consistent catch strategy is more suitable.
 - Consider whether a subflow or shared library is more appropriate when logic is repeated.
