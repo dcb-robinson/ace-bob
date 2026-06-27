@@ -17,125 +17,128 @@ An ACE Toolkit Application project must contain:
 **Every one of these files must be created as explicit file output.** Do not describe the project structure in prose and omit any of them. If a file is listed here and not present in the output, the project is incomplete.
 
 ## `.project` Requirements
-ACE Toolkit Application projects **MUST** contain the following project natures section:
+
+**Use the following complete `.project` file verbatim.** Replace `<ProjectName>` with the actual project folder name. Do not add, remove, or modify any `<nature>` entries — the file must contain exactly the two natures shown and no others.
 
 ```xml
-<natures>
-	<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
-	<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
-</natures>
-```
-
-ACE Toolkit Application projects **MUST** contain the following buildSpec section:
-
-```xml
-<buildSpec>
-	<buildCommand>
-		<name>com.ibm.etools.mft.applib.applibbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.applib.applibresourcevalidator</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.applib.mbprojectbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.msg.validation.dfdl.mlibdfdlbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.flow.adapters.adapterbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.flow.sca.scabuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.msg.validation.dfdl.mbprojectresourcesbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.esql.lang.esqllangbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.map.builder.mslmappingbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.flow.msgflowxsltbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.flow.msgflowbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.decision.service.ui.decisionservicerulebuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.pattern.capture.PatternBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.json.builder.JSONBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.restapi.ui.restApiDefinitionsBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.policy.ui.policybuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.msg.assembly.messageAssemblyBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.msg.validation.dfdl.dfdlqnamevalidator</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.bar.ext.barbuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-	<buildCommand>
-		<name>com.ibm.etools.mft.unittest.ui.TestCaseBuilder</name>
-		<arguments>
-		</arguments>
-	</buildCommand>
-</buildSpec>
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name><ProjectName></name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.ibm.etools.mft.applib.applibbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.applib.applibresourcevalidator</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.applib.mbprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.msg.validation.dfdl.mlibdfdlbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.flow.adapters.adapterbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.flow.sca.scabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.msg.validation.dfdl.mbprojectresourcesbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.esql.lang.esqllangbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.map.builder.mslmappingbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.flow.msgflowxsltbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.flow.msgflowbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.decision.service.ui.decisionservicerulebuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.pattern.capture.PatternBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.json.builder.JSONBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.restapi.ui.restApiDefinitionsBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.policy.ui.policybuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.msg.assembly.messageAssemblyBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.msg.validation.dfdl.dfdlqnamevalidator</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.bar.ext.barbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.unittest.ui.TestCaseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
+		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
+	</natures>
+</projectDescription>
 ```
 
 ## `.settings` Requirements
