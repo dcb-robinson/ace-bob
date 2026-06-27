@@ -15,7 +15,7 @@ Use this checklist after generating or updating ACE artifacts and before finaliz
 ### Project metadata — Application projects
 When a new Application project is created, all three of the following must be present:
 - `.project` contains **exactly 2 natures**: `com.ibm.etools.msgbroker.tooling.applicationNature` and `com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature`. Do not add extra natures.
-- `.settings/org.eclipse.core.resources.prefs` exists with `eclipse.preferences.version=1` and the `encoding/<project>=UTF-8` line.
+- `.settings/org.eclipse.core.resources.prefs` exists and the encoding key uses the **actual project name** — e.g. `encoding/HTTPEchoApp=UTF-8`. Using the literal text `<project>` causes the "no explicit encoding set" warning.
 - `application.descriptor` exists in the project root with the validated XML structure from `ace-projects.md`.
 
 ### Project metadata — Policy projects

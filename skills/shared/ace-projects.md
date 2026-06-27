@@ -144,6 +144,15 @@ eclipse.preferences.version=1
 encoding/<project>=UTF-8
 ```
 
+**`<project>` is a placeholder — replace it with the actual project folder name.** For example, if the project is named `HTTPEchoApp`, the file must contain:
+
+```properties
+eclipse.preferences.version=1
+encoding/HTTPEchoApp=UTF-8
+```
+
+Omitting this substitution causes the Toolkit warning: `Project '<name>' has no explicit encoding set`.
+
 ## `application.descriptor` Requirements
 The `application.descriptor` file must exist in the project root and use the validated ACE structure.
 
