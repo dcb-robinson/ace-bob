@@ -159,26 +159,13 @@ encoding/HTTPEchoApp=UTF-8
 Omitting this substitution causes the Toolkit warning: `Project '<name>' has no explicit encoding set`.
 
 ## `application.descriptor` Requirements
-The `application.descriptor` file must exist in the project root and must list every `.msgflow` file in the project as a `<reference>` entry. **Do not use an empty `<references/>` element** — an empty element causes the application to not appear correctly in the ACE Toolkit Application Development view.
-
-For example, if the project contains `HTTPEcho.msgflow`:
+The `application.descriptor` file must exist in the project root and must use the following exact content — do not add `<reference>` entries:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:appDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.app">
-  <references>
-    <reference>HTTPEcho.msgflow</reference>
-  </references>
+<references/>
 </ns2:appDescriptor>
-```
-
-Add one `<reference>` element per `.msgflow` file in the project. If multiple flows exist:
-
-```xml
-<references>
-  <reference>Flow1.msgflow</reference>
-  <reference>Flow2.msgflow</reference>
-</references>
 ```
 
 ## Output Note
