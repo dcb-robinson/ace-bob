@@ -32,8 +32,14 @@ When a new Application project is created, **all four of the following files mus
 - Required policy files were created where relevant.
 
 ### ESQL correctness
-- If a Compute node transforms between message domains (e.g. XMLNSC → JSON), confirm that output fields are constructed explicitly — not via a direct tree assignment (`SET OutputRoot.JSON.Data = InputRoot.XMLNSC.*`). A direct assignment copies XML tree structure verbatim and produces duplicate keys for repeated elements.
-- Confirm that every element which can repeat in the source is emitted as a JSON array in the output.
+- No direct cross-domain tree assignment (`SET OutputRoot.JSON.Data = InputRoot.XMLNSC.*`) — this produces duplicate keys for repeated elements.
+- A repeatability table was built for every element at every nesting depth before writing code. Every element that can repeat is mapped to a `JSON.Array`, not a scalar.
+- Every repeating element is iterated with `DECLARE ... REFERENCE TO [1]` + `WHILE LASTMOVE` + `MOVE ... NEXTSIBLING NAME`, not `FOR ... AS ...[] DO`.
+- Every JSON array is declared with `CREATE FIELD ... IDENTITY (JSON.Array)` before being populated.
+- Every JSON array object is created with `CREATE LASTCHILD ... TYPE JSON.Object` before its fields are assigned.
+- Every scalar read from the XMLNSC tree uses `FIELDVALUE()`.
+- Output domain is initialised with `CREATE LASTCHILD OF OutputRoot DOMAIN 'JSON'` + `CREATE FIELD OutputRoot.JSON.Data` — not `SET OutputRoot.JSON.Data = NULL`.
+- `CREATE OUTPUTROOT DOMAIN(...)` does not appear anywhere — it is not valid ACE ESQL syntax.
 
 ### Simplicity
 - The flow topology is the minimum required to satisfy the request. Do not add Compute nodes, ESQL files, or transformation logic unless the user explicitly asked for transformation. A direct wire from Input to Reply is correct for a pass-through or echo pattern.
