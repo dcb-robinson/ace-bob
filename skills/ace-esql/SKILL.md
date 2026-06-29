@@ -25,7 +25,9 @@ Use this skill when the user asks to create or modify `.esql` files for ACE Comp
 - When the user provides a target pattern, expected output shape, or reference ESQL, follow that pattern instead of generating a generic example transformation.
 - Preserve valid ACE ESQL constructs unless the requested change or the shared guidance requires otherwise.
 - Do not invent compiler, parser, or unresolved identifier errors for valid ACE ESQL built-ins.
-- Treat `FIELDVALUE(...)`, `LASTMOVE(...)`, `MOVE ... NEXTSIBLING NAME '...'`, and `CREATE FIELD ... IDENTITY (JSON.Array)` as valid ACE ESQL constructs.
+- Treat `FIELDVALUE(...)`, `LASTMOVE(...)`, `MOVE ... NEXTSIBLING NAME '...'`, `TYPE JSON.Object`, and `CREATE FIELD ... IDENTITY (JSON.Array)` as valid ACE ESQL constructs.
+- Do not invent ACE JSON scalar type syntax such as `TYPE JSON.String`, `TYPE JSON.Number`, or `TYPE JSON.Boolean`.
+- Create JSON scalar values with `SET` assignments rather than by inventing typed scalar nodes.
 - Do not describe ACE ESQL fixes as replacing "SQL-like syntax" when the original syntax is valid ACE ESQL.
 - For XMLNSC-to-JSON transformations, follow [`skills/shared/esql-guidelines.md`](../shared/esql-guidelines.md) exactly.
 - For XMLNSC repeating elements, map every repeating element to a JSON array; do not flatten repeated values into concatenated strings.

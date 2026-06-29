@@ -168,13 +168,16 @@ Always use `FIELDVALUE()` when reading leaf values from an XMLNSC tree for outpu
 - Do not invent ESQL built-in functions or statements.
 - `CREATE OUTPUTROOT DOMAIN(...)` is not a valid ESQL statement — do not generate it.
 - `SET OutputRoot.JSON.Data = NULL` does not correctly establish the JSON domain — use `CREATE LASTCHILD OF OutputRoot DOMAIN 'JSON'` + `CREATE FIELD OutputRoot.JSON.Data` instead.
+- Do not invent JSON scalar type syntax such as `JSON.String`, `JSON.Number`, or `JSON.Boolean`.
 - If a requested function or syntax is uncertain, use known ACE ESQL constructs rather than guessing.
 
 ## Known valid ACE ESQL constructs
 - `FIELDVALUE(...)` is a valid ACE ESQL built-in and must not be replaced because it is described as unresolved.
 - `LASTMOVE(...)` is a valid ACE ESQL built-in for reference navigation.
 - `MOVE ref NEXTSIBLING NAME 'X';` is valid ACE ESQL syntax.
+- `TYPE JSON.Object` is valid ACE ESQL syntax for explicit JSON object creation.
 - `CREATE FIELD ... IDENTITY (JSON.Array)` is valid ACE ESQL syntax for explicit JSON array creation.
+- Create JSON scalar values by assigning them with `SET outRef.Field = value` rather than inventing typed scalar nodes.
 - Do not claim that these constructs are invalid unless they are being used in a way that contradicts the ACE guidance in this file.
 
 ## Related files
