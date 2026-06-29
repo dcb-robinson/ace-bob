@@ -162,6 +162,13 @@ Always use `FIELDVALUE()` when reading leaf values from an XMLNSC tree for outpu
 - `SET OutputRoot.JSON.Data = NULL` does not correctly establish the JSON domain — use `CREATE LASTCHILD OF OutputRoot DOMAIN 'JSON'` + `CREATE FIELD OutputRoot.JSON.Data` instead.
 - If a requested function or syntax is uncertain, use known ACE ESQL constructs rather than guessing.
 
+## Known valid ACE ESQL constructs
+- `FIELDVALUE(...)` is a valid ACE ESQL built-in and must not be replaced because it is described as unresolved.
+- `LASTMOVE(...)` is a valid ACE ESQL built-in for reference navigation.
+- `MOVE ref NEXTSIBLING NAME 'X';` is valid ACE ESQL syntax.
+- `CREATE FIELD ... IDENTITY (JSON.Array)` is valid ACE ESQL syntax for explicit JSON array creation.
+- Do not claim that these constructs are invalid unless they are being used in a way that contradicts the ACE guidance in this file.
+
 ## Related files
 - [`skills/ace-esql/SKILL.md`](../ace-esql/SKILL.md)
 - [`skills/shared/review-checklist.md`](review-checklist.md)

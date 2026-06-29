@@ -21,6 +21,10 @@ Use this skill when the user asks to create or modify `.esql` files for ACE Comp
 - Prefer simple, efficient, and maintainable ESQL.
 - Avoid inventing nonexistent ESQL functions.
 - Keep the response focused on the requested ESQL change.
+- Preserve valid ACE ESQL constructs unless the requested change or the shared guidance requires otherwise.
+- Do not invent compiler, parser, or unresolved identifier errors for valid ACE ESQL built-ins.
+- Treat `FIELDVALUE(...)`, `LASTMOVE(...)`, `MOVE ... NEXTSIBLING NAME '...'`, and `CREATE FIELD ... IDENTITY (JSON.Array)` as valid ACE ESQL constructs.
+- Do not describe ACE ESQL fixes as replacing "SQL-like syntax" when the original syntax is valid ACE ESQL.
 - For XMLNSC-to-JSON transformations, follow [`skills/shared/esql-guidelines.md`](../shared/esql-guidelines.md) exactly.
 - For XMLNSC repeating elements, map every repeating element to a JSON array; do not flatten repeated values into concatenated strings.
 - For XMLNSC-to-JSON array traversal, use `DECLARE ... REFERENCE TO ...[1]` with `WHILE LASTMOVE(...)` and `MOVE ... NEXTSIBLING NAME '...'`; do not use `FOR ... AS path[] DO`.
