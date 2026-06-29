@@ -13,18 +13,22 @@ Use this skill when the user asks to create or modify ACE message flows that inc
 - If the request is primarily about project scaffolding, use [`skills/ace-project-setup/SKILL.md`](../ace-project-setup/SKILL.md).
 
 ## Required reading order
-1. [`skills/shared/ace-versions.md`](../shared/ace-versions.md)
-2. [`skills/shared/message-flow-rules.md`](../shared/message-flow-rules.md)
-3. [`skills/shared/node-types.md`](../shared/node-types.md)
-4. [`skills/shared/policy-projects.md`](../shared/policy-projects.md)
-5. [`skills/shared/connector-index.md`](../shared/connector-index.md)
-6. The relevant file under [`skills/shared/connectors/`](../shared/connectors)
-7. [`skills/shared/review-checklist.md`](../shared/review-checklist.md)
+1. [`skills/shared/skill-composition.md`](../shared/skill-composition.md)
+2. [`skills/shared/ace-versions.md`](../shared/ace-versions.md)
+3. [`skills/shared/message-flow-rules.md`](../shared/message-flow-rules.md)
+4. [`skills/shared/node-types.md`](../shared/node-types.md)
+5. [`skills/shared/policy-projects.md`](../shared/policy-projects.md)
+6. [`skills/shared/connector-index.md`](../shared/connector-index.md)
+7. The relevant file under [`skills/shared/connectors/`](../shared/connectors)
+8. [`skills/shared/review-checklist.md`](../shared/review-checklist.md)
 
 ## Critical rules
 - Do not invent connector node types or attributes.
 - Apply the connector-specific allowed operations exactly as documented.
 - Create required policy and schema artifacts when the connector guidance requires them.
+- Do not use this skill alone when the request also requires Compute node implementation or missing ACE project scaffolding.
+- If the request includes Compute node ESQL creation or modification, also use [`skills/ace-esql/SKILL.md`](../ace-esql/SKILL.md).
+- If the request requires Application or Policy project scaffolding, also use [`skills/ace-project-setup/SKILL.md`](../ace-project-setup/SKILL.md).
 - If version-specific validation matters and the ACE version is not known, ask the user.
 
 ## Output requirements
