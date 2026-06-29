@@ -23,6 +23,7 @@ Use this skill when the user asks to create or modify ACE Toolkit `.msgflow` fil
 - Do not invent `xmi:type` values or namespace prefixes.
 - Validate node types using the ACE version guidance and shared node type reference.
 - Ask for missing required node values when there is no obvious safe default.
+- If the request includes Compute node ESQL creation or modification, also use [`skills/ace-esql/SKILL.md`](../ace-esql/SKILL.md) and apply its guidance for the `.esql` artifact.
 
 ## Output requirements
 - Create or update the requested message flow artifacts.

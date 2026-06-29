@@ -21,6 +21,11 @@ Use this skill when the user asks to create or modify `.esql` files for ACE Comp
 - Prefer simple, efficient, and maintainable ESQL.
 - Avoid inventing nonexistent ESQL functions.
 - Keep the response focused on the requested ESQL change.
+- For XMLNSC-to-JSON transformations, follow [`skills/shared/esql-guidelines.md`](../shared/esql-guidelines.md) exactly.
+- For XMLNSC repeating elements, map every repeating element to a JSON array; do not flatten repeated values into concatenated strings.
+- For XMLNSC-to-JSON array traversal, use `DECLARE ... REFERENCE TO ...[1]` with `WHILE LASTMOVE(...)` and `MOVE ... NEXTSIBLING NAME '...'`; do not use `FOR ... AS path[] DO`.
+- Before populating any JSON array, create it explicitly with `CREATE FIELD ... IDENTITY (JSON.Array)`.
+- When reading scalar values from XMLNSC for output to JSON, always use `FIELDVALUE(...)` rather than assigning the XML field reference directly.
 
 ## Output requirements
 - Create or update the requested ESQL artifacts.
