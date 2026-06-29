@@ -21,6 +21,8 @@ Use this skill when the user asks to create or modify `.esql` files for ACE Comp
 - Prefer simple, efficient, and maintainable ESQL.
 - Avoid inventing nonexistent ESQL functions.
 - Keep the response focused on the requested ESQL change.
+- Preserve the requested transformation contract exactly; do not substitute a different output schema, domain, or business behavior.
+- When the user provides a target pattern, expected output shape, or reference ESQL, follow that pattern instead of generating a generic example transformation.
 - Preserve valid ACE ESQL constructs unless the requested change or the shared guidance requires otherwise.
 - Do not invent compiler, parser, or unresolved identifier errors for valid ACE ESQL built-ins.
 - Treat `FIELDVALUE(...)`, `LASTMOVE(...)`, `MOVE ... NEXTSIBLING NAME '...'`, and `CREATE FIELD ... IDENTITY (JSON.Array)` as valid ACE ESQL constructs.

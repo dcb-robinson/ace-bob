@@ -124,6 +124,14 @@ DECLARE saleList REFERENCE TO saleEnvelope.SaleList;
 
 This rule applies whenever the source and target domains differ (XMLNSC→JSON, XMLNSC→JSONARRAY, etc.).
 
+## Transformation fidelity
+- Preserve the requested message domain and target structure exactly.
+- Do not change an XML-to-JSON request into XML-to-XML or any other domain transformation.
+- Do not invent new element names, field names, wrapper objects, or business semantics unless the user explicitly requests them.
+- Do not add calculations, enrichment, default values, formatting changes, aggregation, or derived values unless the user explicitly requests them.
+- If the user provides an expected output shape, example ESQL, or reference implementation, match that structure as closely as possible.
+- For mapping tasks, prefer faithful structural mapping over a redesigned example transformation.
+
 ## ESQL file structure
 Every `.esql` file for a Compute node must use this skeleton. The module name must match the name given to the Compute node in the `.msgflow` file. The file must be placed in the same Application project as the `.msgflow`.
 
